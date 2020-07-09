@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            new Vue({
+                el:"#test",
+                data:{
+                    msg:'Hello World'
+                },
+                beforeCreate(){
+                    alert("1 beforeCreate 创建Vue实例，但是未进行数据观测" + this.msg);
+                },
+                created(){
+                    alert("2 beforeCreate 创建Vue实例，进行了数据观测" + this.msg);
+                },
+                beforeMount(){
+                    alert("3 beforeCreate 挂在vue实例之前" + this.msg + this.$refs.msgText.innerText);
+                },
+                mounted(){
+                    alert("4 beforeCreate 已经挂在vue实例" + this.msg + this.$refs.msgText.innerText);
+                },
+                beforeUpdate(){
+                    alert("5 beforeCreate 数据更新前" + this.$refs.msgText.innerText);
+                },
+                updated(){
+                    alert("6 beforeCreate 数据更新后" + this.$refs.msgText.innerText);
+                },
+                beforeDestroy(){
+                    alert("7 beforeCreate 销毁前");
+                },
+                destroyed(){
+                    alert("8 beforeCreate 销毁后");
+                },
+                methods:{
+                    onDestroy(){
+                        this.$destroy();
+                    }
+                }
+
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="test">
+        <input type="text" v-model="msg">
+        <h1 ref="msgText">{{msg}}</h1>
+        <button @click="onDestroy">销毁</button>
+    </div>
+</body>
+</html>

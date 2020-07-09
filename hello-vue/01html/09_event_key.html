@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-event_keyboard</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            new Vue({
+                el: '#test',
+                data: {
+
+                },
+                methods: {
+                    show(e){
+                        console.log("show")
+                    },
+                    // onEnter(e){
+                    //     if (e.keyCode == 13){
+                    //         console.log("按下回车");
+                    //     }
+                    // },
+                    newOnEnter(){
+                        console.log("按下回车");
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="test">
+    <input type="text" placeholder="keydown" @keydown="show($event)"/>
+    <input type="text" placeholder="onEnter" @keydown="onEnter($event)"/>
+    <input type="text" placeholder="onEnter" @keydown.13="newOnEnter">
+    <input type="text" placeholder="onEnter" @keydown.enter="newOnEnter">
+</div>
+</body>
+</html>

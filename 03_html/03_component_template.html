@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="sikiedu">
+    <my-component-b></my-component-b>
+    <my-component-b></my-component-b>
+</div>
+
+</body>
+
+<template id="my-template">
+    <div>
+        <h2>{{name}}</h2>
+        <button @click="count++">{{count}}</button>
+        <ul>
+            <li v-for="item in numArray">{{item}}</li>
+        </ul>
+    </div>
+</template>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        data:{
+            msg:'123'
+        },
+        components:{
+            "my-component-b":{
+                template:"#my-template",
+                data(){
+                    return{
+                        name:"my-component-b",
+                        numArray:[1,2,3,4,5],
+                        count:0
+                    }
+                }
+            }
+        }
+    }).$mount('#sikiedu');
+
+</script>
+</html>

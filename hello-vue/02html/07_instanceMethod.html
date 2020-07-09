@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实例方法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+    <div id="test">
+        <input type="text" v-model="msg"/> <br>
+        msg: <span>{{msg}}</span><br>
+        <input type="text" v-model="num"/> <br>
+        num: <span>{{num}}</span><br>
+        <input type="text" v-model="user.username"/> <br>
+        num: <span>{{user.username}}</span><br>
+        <button onclick="unWatch()">unWatch</button>
+    </div>
+</body>
+
+<script>
+    let vm = new Vue({
+        el:"#test",
+        data:{
+            msg:'jony',
+            num:1,
+            user:{
+                id:'01',
+                username: 'lzp',
+            }
+        },
+        methods:{
+
+        },
+        watch:{
+            num:function (newValue, oldValue) {
+                console.log('修改了num old='+oldValue+'new ='+newValue);
+            },
+            // user:function (newValue,oldValue) {
+            //     console.log('修改了user old' + oldValue+'new='+newValue);
+            // }
+            user:{
+                handler:function (newValue, oldValue) {
+                    console.log('修改了num old='+oldValue+'new ='+newValue);
+                },
+                deep:true
+            }
+        }
+    });
+    let unwatch = vm.$watch('msg',function (newValue, oldValue) {
+        console.log('修改了oldmsg='+oldValue+'new ='+newValue);
+    });
+    
+    function unWatch() {
+        unwatch();
+    }
+
+</script>
+
+</html>

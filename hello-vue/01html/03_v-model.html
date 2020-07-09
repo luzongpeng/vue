@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <script type="text/javascript" src="../js/vue.js" ></script>
+    <script>
+        window.onload = () => {
+            new Vue({
+                el : '#sikiedu',
+                data : {
+                    checked : false,
+                    users : [],
+                    selected : '',
+                    msg : ''
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="sikiedu">
+    <div id="checkbox">
+        <input type="checkbox" v-model="checked" />{{checked}}
+    </div>
+    <div id="multi-checkbox">
+        <input type="checkbox" value="siki" v-model="users" />siki
+        <input type="checkbox" value="lain" v-model="users" />lain
+        <input type="checkbox" value="joey" v-model="users" />joey
+        <br />
+        选中的老师 : {{users}}
+    </div>
+    <div id="select">
+        <select v-model="selected">
+            <option disabled="disabled" value="">请选择</option>
+            <option>JavaEE</option>
+            <option>Unity3D</option>
+            <option>UE4</option>
+            <option>VUE</option>
+        </select>
+        <span>已选择：{{selected}}</span>
+    </div>
+    <div id="textarea">
+        <textarea v-model="msg"></textarea>
+        <p style="white-space: pre-line;">{{msg}}</p>
+    </div>
+</div>
+</body>
+</html>

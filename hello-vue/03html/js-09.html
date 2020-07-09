@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function login() {
+            var username = document.getElementById("textfield").value;
+            var password = document.getElementById("password").value;
+            var matchresult = true;
+            if (username == '' || password == ''){
+                matchresult = false;
+                alert("请填写用户名和密码");
+            }
+            return matchresult;
+
+        }
+    </script>
+</head>
+<body>
+<form action="time.html" onsubmit="return login()">
+    <table width="300px">
+        <tbody>
+            <tr>
+                <td>用户登录</td>
+            </tr>
+            <tr>
+                <td>用户名:</td>
+                <td>
+                    <input type="text" name="textfield" id="textfield">
+                </td>
+            </tr>
+            <tr>
+                <td>密码:</td>
+                <td>
+                    <input type="password" name="password" id="password">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" onclick="login()" value="登录">
+                    <input type="reset" value="重置">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_computed</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+    <div id="test">
+        <h1>{{msg}}</h1>
+        <h2 ref="hello">hello</h2>
+        <h2 ref="vue">Vue</h2>
+    </div>
+</body>
+
+<script>
+    let vm = new Vue({
+        el:"#test",
+        data:{
+            msg:'lzp'
+        },
+        username: 'luzongpeng',
+        password: '123',
+        login(){
+            console.log('login');
+        }
+    });
+    //$data
+    // console.log(vm.$data);
+    // console.log(vm.$el);
+    // console.log(vm.$options.username);
+    // console.log(vm.$options.password);
+    // vm.$options.login();
+
+    console.log(vm.$refs);
+</script>
+
+</html>

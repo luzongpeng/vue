@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>商品管理</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            Vue.filter('formatDate',function (value) {
+                if (!value){
+                    return '';
+                }
+                if (value instanceof Date){
+                    var d = value;
+                    var y = d.getFullYear();
+                    var m = d.getMonth()+1;
+                    var day = d.getDate() <10 ?'0'+d.getDate():d.getDate();
+                    var myDate = y + '-' + m + '-' + day;
+                }else {
+                    return value;
+                }
+                return myDate;
+            });
+            new Vue({
+                el: '.container',
+                data: {
+                    imgUrl: '../res/image/',
+                    imgName: 'logo.png',
+                    goods: {
+                        id: "",
+                        name: '',
+                        price: '',
+                        num: '',
+                        type: '',
+                        addDate:'',   //2020-01-01
+                    },
+                    goodsType: ['零食', '电子产品', '生活用品'],
+                    goodsArray: [
+                        {id: '001', name: '可乐', price: 3.5, num: 10, type: '零食',addDate:'2020-01-01'},
+                        {id: '002', name: 'GTX2080', price: 9999, num: 20, type: '电子产品',addDate:'2020-01-01'},
+                        {id: '003', name: '牙刷', price: 5, num: 30, type: '生活用品',addDate:'2020-01-01'},
+                    ],
+                    colNum: 8,
+                    delArray: [],//删除选中的索引
+                },
+                methods: {
+                    addGoods() {
+
+                        this.goods.addDate = new Date();
+                        this.goodsArray.push(this.goods);
+                        this.goods = {};
+                    },
+                    delGoods(index) {
+                        this.goodsArray.splice(index, 1);
+                    },
+                    clearGoodsArray() {
+                        this.goodsArray = [];
+                    },
+                    delSelected() {
+                        this.delArray.sort((a, b) => {
+                            return a - b;
+                        });
+                        for (var i = 0; i < this.delArray.length; i++) {
+                            this.goodsArray.splice(this.delArray[i] - i, 1)
+                        }
+                        this.delArray = [];
+                    },
+                }
+            })
+        }
+    </script>
+    <style type="text/css">
+        .container {
+            margin: 0 auto;
+            text-align: center;
+            width: 1000px;
+            border: 2px solid gray;
+        }
+
+        .header {
+            margin: 10px;
+            border: 1px solid gray;
+        }
+
+        .header .title {
+            color: rgb(53, 73, 93);
+            background: rgb(65, 184, 131);
+        }
+
+        .logo {
+            position: relative;
+            top: 12px;
+        }
+
+        .form-warp {
+            margin: 10px;
+            padding-bottom: 10px;
+            border: 1px solid gray;
+        }
+
+        .form-warp .content {
+            line-height: 35px;
+        }
+
+        .form-warp input {
+            width: 150px;
+            height: 18px;
+        }
+
+        .form-warp select {
+            width: 154px;
+            height: 24px;
+        }
+
+        .sub-title {
+            color: rgb(65, 184, 131);
+            background: rgb(53, 73, 93);
+        }
+
+        .table-warp {
+            margin: 10px;
+            padding-bottom: 10px;
+            border: 1px solid gray;
+        }
+
+        .table-warp th {
+            width: 80px;
+            color: #FFF;
+            background-color: rgb(53, 73, 93);
+        }
+
+        .table-warp a {
+            text-decoration: none;
+        }
+
+        .clear-btn {
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .fontColor {
+            color: gray;
+        }
+
+        .myBackgounrdColor {
+            background: rgb(65, 184, 131);
+        }
+
+        .myFontSize {
+            font-size: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--    有logo和title-->
+    <div class="header">
+        <img :src="imgUrl + imgName" alt="" class="logo" height="80px">
+        <h1 class="title">商品管理 v1.0</h1>
+    </div>
+    <!--    输入部分input-->
+    <div class="form-warp">
+        <h2 class="sub-title">添加商品</h2>
+        <div class="content">
+            商品编号:<input type="text" placeholder="请输入商品编号" v-model="goods.id"> <br>
+            商品名称:<input type="text" placeholder="请输入商品名称" v-model="goods.name"> <br>
+            商品价格:<input type="text" placeholder="请输入商品价格" v-model="goods.price"> <br>
+            商品数量:<input type="text" placeholder="请输入商品数量" v-model="goods.num"> <br>
+            商品类型:<select v-model="goods.type">
+            <option value="">选择商品类型</option>
+            <option v-for="type in goodsType">{{type}}</option>
+        </select>
+        </div>
+        <div class="form-btn">
+            <button @click="addGoods()">确认添加</button>
+            <button @click="goods = {}">重置信息</button>
+        </div>
+    </div>
+    <!--    显示表格-->
+    <div class="table-warp">
+        <h2 :class="{fontColor:goodsArray.length<=0}" class="sub-title">商品列表</h2>
+        <div class="content">
+            <table border="1" align="center">
+                <tr>
+                    <th>序号</th>
+                    <th>编号</th>
+                    <th>名称</th>
+                    <th>价格</th>
+                    <th>数量</th>
+                    <th>类型</th>
+                    <th style="width: 100px">入库日期</th>
+                    <th>删除</th>
+                    <th>选择</th>
+                </tr>
+                <tr>
+                    <td height="100px" :colspan="colNum" v-show="goodsArray<=0">暂无商品</td>
+                </tr>
+                <tr v-for="(item,index) in goodsArray" :key="item.id">
+                    <td>{{index}}</td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td style="display: flex">
+                        <a style="flex: 0.5;" href="#" @click.prevent="item.num = item.num-- <= 0?0:item.num--">-</a>
+                        {{item.num}}
+                        <a style="flex: 0.5;" href="#" @click.prevent="item.num++">+</a>
+                    </td>
+                    <td>{{item.type}}</td>
+                    <td>{{item.addDate | formatDate}}</td>
+                    <td>
+                        <button @click="delGoods(index)">删除</button>
+                    </td>
+                    <td>
+                        <input type="checkbox" :value="index" v-model="delArray">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="clear-btn">
+            <a href="#" @click.prevent="delSelected" v-show="goodsArray.length>0">清空选中</a>
+            <a href="#" @click.prevent="clearGoodsArray" v-show="goodsArray.length>0">清空全部</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

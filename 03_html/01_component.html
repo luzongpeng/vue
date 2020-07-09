@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="sikiedu">
+<!--    <h1>hello Vue</h1>-->
+    <my-component></my-component>
+    <my-componenta></my-componenta>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+    //创建构造器
+    let myComponent = Vue.extend({
+       template:'<h1>hello Vue</h1>'
+    });
+    //注册组件
+    Vue.component('my-component',myComponent);
+
+    //注册组件的简写
+    Vue.component('my-componenta',{
+        template:'<h2>hello World</h2>'
+    })
+
+    new Vue({}).$mount('#sikiedu');
+</script>
+</html>

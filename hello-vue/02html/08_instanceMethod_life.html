@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实例方法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+    <div id="test">
+        <input type="text" v-model="msg"/> <br>
+        msg: <span>{{msg}}</span><br>
+    </div>
+</body>
+
+<script>
+    let vm = new Vue({
+        // el:"#test",
+        data:{
+            msg:'jony',
+        }
+
+    });
+    vm.$mount("#test");
+    
+
+
+</script>
+
+</html>

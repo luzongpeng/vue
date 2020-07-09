@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-event_keyboard</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            new Vue({
+                el: '#test',
+                data: {
+                    imgUrl:'https://cn.vuejs.org/images/logo.png',
+                    myWidth:"120px",
+                    myHeight:"240px",
+                    filename:"logo.png",
+                },
+                methods: {
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="test">
+<!--    <img v-bind:src="imgUrl">-->
+    <img :src="'../res/image/'+filename" :width="myWidth" :height="myHeight">
+</div>
+</body>
+</html>

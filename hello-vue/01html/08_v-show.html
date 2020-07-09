@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            new Vue({
+                el: '#test',
+                data: {
+                    num:0
+                },
+                methods: {
+
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="test">
+    <h1 v-show="true">你好,世界</h1>
+    <h1 v-if="true">你好,世界</h1>
+    <button @click="num = 1">===1===</button>
+    <button @click="num = 2">===2===</button>
+    <button @click="num = -1">===-1===</button>
+    <h2 v-if="num === 1">我要微微</h2>
+    <h2 v-else-if = "num === 2">我要微微2</h2>
+    <h2 v-else>我要微微3</h2>
+</div>
+</body>
+</html>

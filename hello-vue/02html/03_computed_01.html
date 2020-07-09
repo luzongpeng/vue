@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_computed</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            new Vue({
+                el:"#test",
+                data:{
+                    num:0
+                },
+                computed:{
+                    // num1:function () {
+                    //     return parseInt(this.num)+10;
+                    // }
+                    num1:{
+                        get:function () {
+                            return parseInt(this.num) + 10;
+                        },
+                        set:function (value) {
+                            this.num=value;
+                        }
+                    }
+                }
+
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="test">
+        <input type="text" v-model="num">
+        <br>
+        原样显示:<h1>{{num}}</h1><br>
+        <input type="text" v-model="num1">
+        <br>
+        计算属性显示：<h1>{{num1}}</h1>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function showTime() {
+            var now = new Date();   //获取当前时间
+            var h = now.getHours()<10?'0'+now.getHours():now.getHours();
+            var m = now.getMinutes()<10?'0'+now.getMinutes():now.getMinutes();
+            var s = now.getSeconds()<10?'0'+now.getSeconds():now.getSeconds();
+            var clocktext = "现在时间: " + h + ":" + m + ":" + s;
+            var time = document.getElementById("timearea");
+            time.innerHTML=clocktext;
+        }
+        window.setInterval("showTime()",1000);
+    </script>
+</head>
+<body onload="showTime()">
+    <div id="timearea" >
+    </div>
+</body>
+</html>

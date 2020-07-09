@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <link href="1.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        var title = new Array();
+        title[0] = "1.全民国家安全日";
+        title[1] = "2.不忘初心牢记使命";
+        title[2] = "3.学习强国";
+        nowimg = 1;
+        maximg = 3;
+
+        function show(num) {
+            if (Number(num)) {
+                clearTimeout(thetimer);
+                nowimg = num;
+            }
+            for(var i=1;i<(maximg+1);(i++){
+                if(i==nowimg){
+                    document.getElementById("image").src="img2/"+i+".jpg";
+                    document.getElementById("num_" + i).innerHTML=title[i-1];
+                    document.getElementById("num_" + i).className = "numberover";
+                } else {
+                    document.getElementById("num_" + i).innerHTML = i;
+                    document.getElementById("num_" + i).className = "number";
+                }
+            }
+            if (nowimg == maximg) {
+                nowimg = 1;
+            } else {
+                nowimg++;
+            }
+        }
+        var thetimer=setInterval("show()",3000);
+
+        window.onload=show;
+    </script>
+</head>
+
+<body>
+<div class="box">
+    < img src="img2/1.jpg" width="900" height="400" alt="" id="image"/>
+    <div class="bg">
+        <div class="number" id="num_1" onClick="show(1)">1</div>
+        <div class="number" id="num_2" onclick="show(2)">2</div>
+        <div class="number" id="num_3" onclick="show(3)">3</div>
+    </div>
+</div>
+</body>
+</html>

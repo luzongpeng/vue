@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实例方法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+    <div id="test">
+        <input type="text" v-model="name"/> <br>
+        name: <span v-if="flag" v-demo ref="name">{{name}}</span><br>
+        <button @click="flag=!flag">解除绑定</button>
+    </div>
+</body>
+
+<script>
+    Vue.directive("demo",{
+        //指令的钩子函数
+        bind(){
+            alert("首次绑定到元素的时候执行,只执行一次,常用于初始化操作");
+        },
+        inserted(){
+            alert("插入到父节点之后，DOM对象");
+        },
+        unbind(){
+            alert("解除绑定");
+        },
+        update(){
+            alert("update 绑定该指令的元素 所在的Vue实例挂载在DOM树，发生更新时调用"+"name = "+vm.$refs.name.textContent);
+        },
+        componentUpdated(){
+            alert("componentUpdated 更新后调用"+"name = "+vm.$refs.name.textContent);
+        }
+    });
+
+    let vm = new Vue({
+        // el:"#test",
+        data:{
+            name:'jony',
+            flag: true
+        }
+
+    }).$mount("#test");
+
+
+
+</script>
+
+</html>

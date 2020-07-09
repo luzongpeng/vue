@@ -1,0 +1,30 @@
+@charset "utf-8";
+.box{
+    width: 900px;
+    margin: 0 auto;
+    border: 2px solid #98393A;
+}
+.bg{
+    background-color: #7F4041;
+    height: 20px;
+}
+.number{
+    float: left;
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-color: #663334;
+    margin-left: 10px;
+    color: #B45B5C;
+    text-align: center;
+    font-weight: bolder;
+}
+.numberover{
+    width: 280px;
+    background-color: #766b6b;
+    text-align: center;
+    color: #0ae09d;
+    float: left;
+    display: block;
+    margin-left: 10px;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="sikiedu">
+    <my-component-b></my-component-b>
+</div>
+
+<div id="joey">
+    <my-componenta></my-componenta>
+</div>
+</body>
+<script type="text/javascript" src="../vue.js"></script>
+<script type="text/javascript">
+
+    //注册组件的简写
+    Vue.component('my-componenta',{
+        template:'<h2>{{name}}</h2>',
+        data:function () {
+            return {name:'hello world111'}
+        }
+    })
+
+    new Vue({
+        data:{
+            msg:'123'
+        },
+        components:{
+            "my-component-b":{
+                template:"<h2>{{name}}</h2>",
+                data(){
+                    return{
+                        name:"my-component-b"
+                    }
+                }
+            }
+        }
+    }).$mount('#sikiedu');
+
+    new Vue({
+        data:{
+            msg:'abc'
+        },
+        components:{
+
+        }
+    }).$mount('#joey');
+</script>
+</html>

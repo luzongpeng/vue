@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function mouseover() {
+            document.mouse.src="../res/img(1)/mouse_over.jpg";
+        }
+        function mouseout() {
+            document.mouse.src="../res/img(1)/mouse_out.jpg";
+        }
+        function mousepresses() {
+            if (event.button==2){
+                alert("右键单击");
+            }else {
+                alert("左键单击");
+
+            }
+        }
+    </script>
+</head>
+
+<body onmousedown="mousepresses()">
+<div style="width: 100%;height: 100vh">
+    <img src="../res/img(1)/mouse_out.jpg" onmouseover="mouseover()" onmouseout="mouseout()" alt="图片" name="mouse">
+</div>
+</body>
+</html>

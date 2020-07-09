@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            new Vue({
+                el:"#test",
+                data:{
+                    username:''
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="test">
+        用户名:<input type="text" v-model="username">
+        {{username}}
+    </div>
+</body>
+</html>

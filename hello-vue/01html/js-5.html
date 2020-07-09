@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function changecolor(color) {
+            var table = document.getElementById("colortable")
+            table.bgColor=color;
+        }
+
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr height="25px">
+            <td width="25px" bgcolor="red" onclick="changecolor('red')"></td>
+            <td width="25px" bgcolor="orange" onclick="changecolor('orange')"></td>
+            <td width="25px" bgcolor="yellow" onclick="changecolor('yellow')"></td>
+            <td width="25px" bgcolor="blue" onclick="changecolor('blue')"></td>
+            <td width="25px" bgcolor="green" onclick="changecolor('green')"></td>
+            <td width="25px" bgcolor="purple" onclick="changecolor('purple')"></td>
+        </tr>
+    </table>
+<table border="1" width="190" height="190" id="colortable">
+    <tr><td></td></tr>
+</table>
+
+</body>
+</html>

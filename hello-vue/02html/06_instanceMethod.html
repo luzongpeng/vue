@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实例方法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+<body>
+    <div id="test">
+        id: <span>{{user.id}}</span> <br>
+        用户名:<span>{{user.username}}</span>
+        <button @click="changeUsername">changeUsername</button>
+        <button @click="addId">addId</button>
+        <button @click="delId">delId</button>
+    </div>
+</body>
+
+<script>
+    let vm = new Vue({
+        el:"#test",
+        data:{
+            user:{
+                username: 'jony'
+            }
+        },
+        methods:{
+            changeUsername(){
+                this.user.username = 'luzongpeng';
+            },
+            addId(){
+                // this.user.id=1;
+                // this.$set(this.user,'id',1);
+                if (this.user.id){
+                    this.user.id++;
+                }else {
+                    Vue.set(this.user, 'id', 1);
+                }
+                console.log(this.user.id);
+
+            },
+            delId(){
+                // this.$delete(this.user,'id');
+                Vue.delete(this.user,'id');
+            }
+        }
+
+    });
+
+</script>
+
+</html>

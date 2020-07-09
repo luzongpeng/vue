@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_computed</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script>
+        window.onload = function () {
+            new Vue({
+                el:"#test",
+                data:{
+                    msg:''
+                },
+                computed:{
+                    msg1:function () {
+                        console.log("### computed");
+                        return this.msg.toUpperCase();
+                    }
+                },
+                methods:{
+                    upperCase(){
+                        console.log("### methods");
+                        return this.msg.toUpperCase();
+                    },
+                    show(){
+                        console.log("计算属性" + this.msg1)
+                        console.log("方法调用" + this.upperCase())
+                    }
+                }
+
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="test">
+        <input type="text" v-model="msg">
+        <br>
+        原样显示:<h1>{{msg}}</h1>
+        <br>
+        <br>
+        计算属性显示：<h1>{{msg1}}</h1>
+        <br>
+        方法显示:<h1>{{upperCase()}}</h1>
+        <button @click="show"></button>
+    </div>
+</body>
+</html>
